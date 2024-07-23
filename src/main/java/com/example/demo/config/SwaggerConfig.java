@@ -1,6 +1,6 @@
 package com.example.demo.config;
 
-import org.springdoc.core.GroupedOpenApi;
+//import org.springdoc.core.GroupedOpenApi;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import io.swagger.v3.oas.models.OpenAPI;
@@ -17,11 +17,11 @@ public class SwaggerConfig {
                         .description("Demo project for Spring Boot"));
     }
 
-    @Bean
-    public GroupedOpenApi publicApi() {
-        return GroupedOpenApi.builder()
-                .group("springshop-public")
-                .pathsToMatch("/**")
-                .build();
-    }
+//    @Bean
+//    public GroupedOpenApi publicApi() {
+//        return GroupedOpenApi.builder()
+//                .group("springshop-public")
+//                .pathsToMatch("/**")
+//                .build();
+//    }
 }

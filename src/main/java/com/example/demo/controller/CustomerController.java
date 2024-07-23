@@ -37,7 +37,10 @@ public class CustomerController {
         Customer updatedCustomer = customerService.updateCustomer(id, customerDetails);
         return ResponseEntity.ok(updatedCustomer);
     }
-
+    @PutMapping("/ping")
+    public ResponseEntity<String> ping() {
+        return ResponseEntity.ok("Hello World");
+    }
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCustomer(@PathVariable Integer id) {
         customerService.deleteCustomer(id);
