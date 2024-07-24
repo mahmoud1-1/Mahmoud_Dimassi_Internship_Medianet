@@ -1,14 +1,19 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
 import java.util.Objects;
 
 @Setter
 @Getter
 @Entity
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 
 public class Customer {
     @Id
@@ -26,6 +31,10 @@ public class Customer {
     private String email;
     private String age;
 
+    @OneToMany(mappedBy = "id", cascade = CascadeType.ALL, orphanRemoval = true)
+    //@JsonManagedReference
+    private List<Order> orders;
+
     public Customer(Integer id, String name, String email, String age) {
         this.id = id;
         this.name = name;
@@ -33,15 +42,17 @@ public class Customer {
         this.age = age;
     }
 
-    public Customer() {
-    }
+
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Customer customer = (Customer) o;
-        return Objects.equals(id, customer.id) && Objects.equals(name, customer.name) && Objects.equals(email, customer.email) && Objects.equals(age, customer.age);
+        return Objects.equals(id, customer.id) &&
+                Objects.equals(name, customer.name) &&
+                Objects.equals(email, customer.email) &&
+                Objects.equals(age, customer.age);
     }
 
     @Override
@@ -56,6 +67,7 @@ public class Customer {
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", age='" + age + '\'' +
+                ", orders=" + orders +
                 '}';
     }
 }

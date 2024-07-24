@@ -30,8 +30,12 @@ public class SecurityConfiguration  {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((authz) -> authz
-                        .requestMatchers("/api/v1/controller/login","/api/v1/controller/register").permitAll()
-                        .requestMatchers("/api/v1/**").authenticated()
+//                        .requestMatchers("/api/v1/controller/login","/api/v1/controller/register").permitAll()
+//                        .requestMatchers("/api/v1/**").authenticated()
+////                        .requestMatchers("/api/v1/customers/**").permitAll()
+////                        .requestMatchers("/api/v1/orders/**").permitAll()
+//                        .requestMatchers("/api/v1/customers/**").hasRole("USER")
+//                        .requestMatchers("/api/v1/orders/**").hasRole("USER")
                         .anyRequest().permitAll())
                 .formLogin(form -> form.disable())
                 //.authenticationProvider(authenticationProvider)

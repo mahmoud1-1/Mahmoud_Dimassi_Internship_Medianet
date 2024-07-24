@@ -1,7 +1,9 @@
 package com.example.demo.service;
 
 import com.example.demo.model.Customer;
+import com.example.demo.model.Order;
 import com.example.demo.repository.CustomerRepository;
+import com.example.demo.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,4 +44,7 @@ public class CustomerService {
                 .orElseThrow(() -> new RuntimeException("Customer not found"));
         customerRepository.delete(customer);
     }
+
+
+
 }
